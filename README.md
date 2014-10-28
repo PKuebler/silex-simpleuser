@@ -166,6 +166,8 @@ The default values are shown below.
 
         // Set this to use a custom User class.
         'userClass' => 'SimpleUser\User',
+        // Set this to use a custom UserManager class.
+        'userManagerClass' => 'SimpleUser\UserManager',
 
         // Whether to require that users have a username (default: false).
         // By default, users sign in with their email address instead.
