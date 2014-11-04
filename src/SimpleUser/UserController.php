@@ -110,8 +110,10 @@ class UserController
                         'email' => $user->getEmail(),
                     ));
                 } else {
-                    // Log the user in to the new account.
-                    $this->userManager->loginAsUser($user);
+                    if (!$app['security']->isGranted('EDIT_USER')) {
+                        // Log the user in to the new account.
+                        $this->userManager->loginAsUser($user);
+                    }
 
                     $app['session']->getFlashBag()->set('alert', 'Account created.');
 
