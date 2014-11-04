@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {% if app.user %}
+    {% if app.user and not is_granted('EDIT_USER') %}
         <p>Hello, {{ app.user.displayName }}. You are already registered and signed in.</p>
         <p><a href="{{ path('user.logout') }}">Sign out</a></p>
 
@@ -13,9 +13,11 @@
             Create an account
         </h1>
 
+        {% if is_granted('EDIT_USER') %}
         <p class="text-muted lead">
             Already have an account? <a href="{{ path('user.login') }}">Sign in now.</a>
         </p>
+        {% endif %}
 
         {% if error %}
             <div class="alert alert-danger">{{ error|nl2br }}</div>
