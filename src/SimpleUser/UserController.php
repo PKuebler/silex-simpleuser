@@ -110,7 +110,7 @@ class UserController
                         'email' => $user->getEmail(),
                     ));
                 } else {
-                    if (!$app['security']->isGranted('EDIT_USER')) {
+                    if (!$app['security']->isGranted('ROLE_ADMIN')) {
                         // Log the user in to the new account.
                         $this->userManager->loginAsUser($user);
                     }
